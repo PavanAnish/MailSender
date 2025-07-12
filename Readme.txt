@@ -57,7 +57,7 @@ Email sent successfully ✅
 
 Author
 ------
-Created by [Your Name]
+Created by Pavan Anish
 
 License
 -------
