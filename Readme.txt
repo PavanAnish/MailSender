@@ -1,5 +1,5 @@
-Mail Sender Project
-===================
+ Mail Sender Project
+ ===================
 
 A simple Python-based email sender tool that allows users to send emails via SMTP. 
 This is great for learning Python automation and understanding email protocols.
