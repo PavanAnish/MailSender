@@ -12,17 +12,18 @@ sender_email = os.getenv("SENDER_EMAIL")
 
 # Set up LLM
 model = OllamaLLM(model="llama3")
-
+print("🤖 Enter Your Prompt")
+start=input("You: ").strip().lower()
 # Define prompt
-prompt_template = ChatPromptTemplate.from_template("""
-You are an AI that writes birthday wishes.
+while start != "":
+    prompt_template = ChatPromptTemplate.from_template("""
+    {start} and if needed, add the name {name} to the message.
+    Use a {tone} tone. Make sure to include all necessary details.
+    Generate a concise and clear message that can be sent via email.
+    """)
 
-Write a {tone} birthday message for a friend named {name}.
-Keep it friendly and creative.
-""")
-
-# Combine prompt with model
-chain = prompt_template | model
+    # Combine prompt with model
+    chain = prompt_template | model
 
 # Collect input
 receiver_email = input("Enter recipient email: ")
@@ -43,7 +44,7 @@ if button == "yes" or button == "y":
     email = Mail(
         from_email=sender_email,
         to_emails=receiver_email,
-        subject=f"Happy Birthday, {name}!",
+        subject=f"Hello, {name}!",
         plain_text_content=message_content
     )
     response = sg.send(email)
